@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>程思语 - 简历</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    background: #f0f0f0;
+    color: #1a1a1a;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+    .edit-tip { display: none; }
+  }
+
+  .edit-tip {
+    background: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+  .edit-tip span { opacity: 0.6; margin: 0 12px; }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 24px auto;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+  }
+
+  /* ===== 左侧黑色栏 ===== */
+  .sidebar {
+    background: #1c1c1e;
+    color: #e8e8e8;
+    padding: 36px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .name-block .name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    margin-bottom: 6px;
+    color: #ffffff;
+  }
+  .name-block .intent {
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 1px;
+    border-top: 1px solid #333;
+    padding-top: 8px;
+    margin-top: 8px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11.5px;
+    color: #aaa;
+    margin-bottom: 6px;
+    word-break: break-all;
+  }
+  .contact-item .icon { opacity: 0.5; flex-shrink: 0; margin-top: 1px; }
+
+  .s-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 1px solid #333;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: #2a2a2c;
+    color: #ccc;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin: 3px 3px 3px 0;
+    border: 1px solid #383838;
+  }
+
+  .lang-item { margin-bottom: 8px; }
+  .lang-name { font-size: 12px; color: #bbb; margin-bottom: 3px; }
+  .lang-bar { height: 3px; background: #333; border-radius: 2px; }
+  .lang-fill { height: 100%; background: #888; border-radius: 2px; }
+
+  .honor-item {
+    font-size: 12px;
+    color: #aaa;
+    padding-left: 10px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .honor-item::before { content: "★"; position: absolute; left: 0; font-size: 9px; color: #666; top: 2px; }
+
+  /* ===== 右侧主内容 ===== */
+  .main {
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .m-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    border-bottom: 2px solid #1c1c1e;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
+  }
+
+  .summary-text {
+    font-size: 12.5px;
+    color: #444;
+    line-height: 1.75;
+  }
+
+  .entry { margin-bottom: 14px; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+  .entry-title { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+  .entry-date { font-size: 11px; color: #888; white-space: nowrap; margin-left: 8px; }
+  .entry-sub { font-size: 11.5px; color: #666; margin-bottom: 5px; }
+
+  .entry-bullets { padding-left: 14px; list-style: none; }
+  .entry-bullets li {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.65;
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 10px;
+  }
+  .entry-bullets li::before { content: "–"; position: absolute; left: 0; color: #999; }
+
+  .kw { font-weight: 600; color: #1a1a1a; }
+
+  .edu-entry { margin-bottom: 10px; }
+  .edu-row {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    align-items: baseline;
+    gap: 0 12px;
+  }
+  .edu-date { font-size: 11px; color: #888; white-space: nowrap; }
+  .edu-school { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+  .edu-degree { font-size: 12px; font-weight: 600; color: #444; white-space: nowrap; }
+  .edu-detail { font-size: 11.5px; color: #888; margin-top: 3px; }
+</style>
+</head>
+<body>
+
+<div class="edit-tip">
+  📝 F12 → Elements 编辑文字 &nbsp;<span>|</span>&nbsp; Ctrl+P 打印/导出 PDF &nbsp;<span>|</span>&nbsp; VS Code 打开长期维护
+</div>
+
+<div class="page">
+
+  <!-- ========== 左侧栏 ========== -->
+  <aside class="sidebar">
+
+    <!-- 头像 -->
+    <div style="text-align:center; margin-bottom:4px;">
+      <img src="/Users/chengsiyu/Desktop/简历.jpg" alt="头像"
+        style="width:90px;height:110px;object-fit:cover;border:1px solid #333;display:block;margin:0 auto;">
+    </div>
+
+    <!-- 姓名 + 意向 -->
+    <div class="name-block">
+      <div class="name">程思语</div>
+      <div class="intent">产品经理 / AI 产品方向</div>
+    </div>
+
+    <!-- 联系方式 -->
+    <div>
+      <div class="s-section-title">联系方式</div>
+      <div class="contact-item"><span class="icon">📱</span>15701601901</div>
+      <div class="contact-item"><span class="icon">✉️</span>15701601901@163.com</div>
+    </div>
+
+    <!-- 专业技能 -->
+    <div>
+      <div class="s-section-title">专业技能</div>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;color:#666;margin-bottom:6px;">AI-Native 能力</div>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">Agent 搭建</span>
+        <span class="skill-tag">AI Workflow</span>
+        <span class="skill-tag">Claude Code</span>
+        <span class="skill-tag">PRD → Demo 全链路</span>
+        <span class="skill-tag">Obsidian / Skill 沉淀</span>
+      </div>
+
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px;color:#666;margin-bottom:6px;">数据分析</div>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel</span>
+      </div>
+
+      <div>
+        <div style="font-size:11px;color:#666;margin-bottom:6px;">产品</div>
+        <span class="skill-tag">用户调研</span>
+        <span class="skill-tag">PRD</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">A/B 实验</span>
+        <span class="skill-tag">竞品分析</span>
+      </div>
+    </div>
+
+    <!-- 语言 -->
+    <div>
+      <div class="s-section-title">语言</div>
+      <div class="lang-item">
+        <div class="lang-name">中文（母语）</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">英语（雅思 7.0）</div>
+        <div class="lang-bar"><div class="lang-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+
+    <!-- 荣誉 -->
+    <div>
+      <div class="s-section-title">荣誉 & 活动</div>
+      <div class="honor-item">「京东杯」创业创新大赛 决赛一等奖</div>
+      <div class="honor-item">「京彩大创」创业创新大赛 三等奖</div>
+      <div class="honor-item">中国人民大学 FreeDancer 自由舞者协会 社长</div>
+      <div class="honor-item">中意美三学位本科班 班长</div>
+    </div>
+
+  </aside>
+
+  <!-- ========== 右侧主内容 ========== -->
+  <main class="main">
+
+    <!-- 教育背景 -->
+    <section>
+      <div class="m-section-title">Education</div>
+      <div class="edu-entry">
+        <div class="edu-row">
+          <span class="edu-date">2023/09 — 2027/06</span>
+          <span class="edu-school">中国人民大学 商学院</span>
+          <span class="edu-degree">工商管理类（会计学）本科</span>
+        </div>
+        <div class="edu-detail">主修：统计学、市场营销学、大数据财务分析、企业战略管理、财务管理学</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-row">
+          <span class="edu-date">2024/09 — 2025/09</span>
+          <span class="edu-school">Luiss Guido Carli University</span>
+          <span class="edu-degree">Business Administration</span>
+        </div>
+        <div class="edu-detail">主修：国际金融环境、国际政治与经济、欧盟经济法、人工智能与科学</div>
+      </div>
+    </section>
+
+    <!-- 自我评价 -->
+    <section>
+      <div class="m-section-title">Profile</div>
+      <p class="summary-text">
+        具备 AI 产品<span class="kw">从 0 到 1 的完整实战经验</span>，可独立完成从 PRD、用户调研到可交互 Demo 交付的全链路产品设计。深度理解多模态大模型原理，基于 Prompt Engineering 设计多步骤调用与约束机制，实现<span class="kw">工业级 AIGC 稳定输出</span>。有内容平台自媒体运营经历（全平台 7000+ 粉丝），对用户行为与内容生态有第一视角理解。英语可作为工作语言（雅思 7.0）。
+      </p>
+    </section>
+
+    <!-- 工作经历 -->
+    <section>
+      <div class="m-section-title">Work Experience</div>
+
+      <!-- 美团 -->
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">美团 在线娱乐部 — 蛙蛙AI漫剧</span>
+          <span class="entry-date">2026/05 — 至今</span>
+        </div>
+        <div class="entry-sub">产品经理实习生</div>
+        <ul class="entry-bullets">
+          <li><span class="kw">AIGC 产品流程设计</span>：基于用户心智重构分镜到短剧制作的交互流程，独立完成交互原型与流程 Demo 开发，实现优于行业竞品的使用效果。</li>
+          <li><span class="kw">AI Prompt 工程化</span>：主导 AIGC Prompt 系统化设计，构建双层架构与自动关联资产机制，建立自测流程保障生成质量，实现工业级分镜表输出。</li>
+          <li><span class="kw">竞品与行业研究</span>：系统拆解主要竞品 AI Agent 能力边界，独立输出 AI 视频生成赛道深度分析报告，覆盖市场格局、技术路线演进与商业模式，直接支撑产品差异化决策。</li>
+        </ul>
+      </div>
+
+      <!-- 小红书 -->
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">小红书 大商业风险感知与策略运营中心</span>
+          <span class="entry-date">2026/01 — 2026/04</span>
+        </div>
+        <div class="entry-sub">风控策略运营实习生</div>
+        <ul class="entry-bullets">
+          <li>深度理解小红书内容生态与平台规则机制，在「管控效率与创作者体验」的权衡中建立<span class="kw">产品化思维</span>。</li>
+          <li><span class="kw">数据分析与指标体系</span>：定义「事件量 × VVR 浓度 × diff 值」优先级判断框架，构建核心体验指标体系，驱动团队资源聚焦。</li>
+          <li>策略优化落地：针对机审高误伤率发起策略优化，将误伤率从 <span class="kw">33.8% 降至 25.5%</span>，完成「管控效率与创作者体验」权衡的产品化论证。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 项目经历 -->
+    <section>
+      <div class="m-section-title">Projects</div>
+
+      <!-- JoyOps -->
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">JoyOps：出海商品运营一体化工作台</span>
+          <span class="entry-date">2026/04</span>
+        </div>
+        <div class="entry-sub">项目负责人 / 首席产品官 — 基于 Vibe Coding</div>
+        <ul class="entry-bullets">
+          <li><span class="kw">用户调研与需求定义</span>：拆解出海欧洲商品运营工作流断点，定义选品→内容→合规一站式决策中枢。</li>
+          <li><span class="kw">产品设计与落地</span>：主导团队组建，设计三位一体协同 Agent，AI 输出结构化评分、营销草案与合规警示；产品从概念到可演示原型全链路落地。</li>
+          <li>工作流从 2–3 周压缩至 3–5 天；成果：「京东杯」创业创新大赛决赛<span class="kw">一等奖</span>，「京彩大创」三等奖。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 内容创作 -->
+    <section>
+      <div class="m-section-title">Content & Community</div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">舞蹈领域自媒体博主</span>
+          <span class="entry-date">2023 — 至今</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>独立运营小红书 / 抖音 / 微信视频号 / bilibili 全平台账号，累计粉丝 <span class="kw">7000+</span>；对内容平台算法分发逻辑与用户增长机制有第一视角理解。</li>
+          <li>主导内容策划、拍摄剪辑、文案全流程；单条视频最高播放 <span class="kw">160w</span>，点赞 13.1w，具备从内容洞察到用户触达的完整判断能力。</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
