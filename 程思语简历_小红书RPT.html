@@ -6,9 +6,10 @@
 <title>程思语 - 简历</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
     font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
-    background: #f0f0f0;
+    background: #e8e6e1;
     color: #1a1a1a;
     font-size: 13px;
     line-height: 1.6;
@@ -21,48 +22,49 @@
   }
 
   .edit-tip {
-    background: #1a1a1a;
-    color: #fff;
+    background: #3a3a3a;
+    color: #d0cdc8;
     text-align: center;
     padding: 8px 16px;
     font-size: 12px;
     letter-spacing: 0.5px;
   }
-  .edit-tip span { opacity: 0.6; margin: 0 12px; }
+  .edit-tip span { opacity: 0.4; margin: 0 12px; }
 
   .page {
     width: 794px;
     min-height: 1123px;
     margin: 24px auto;
     background: #fff;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.10);
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 210px 1fr;
   }
 
-  /* ===== 左侧黑色栏 ===== */
+  /* ===== 左侧浅米灰栏 ===== */
   .sidebar {
-    background: #1c1c1e;
-    color: #e8e8e8;
-    padding: 36px 22px;
+    background: #F5F3EF;
+    color: #2c2c2c;
+    padding: 38px 20px 38px 22px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 26px;
+    border-right: 1px solid #e2dfd9;
   }
 
   .name-block .name {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     line-height: 1.3;
     margin-bottom: 6px;
-    color: #ffffff;
+    color: #111111;
   }
   .name-block .intent {
-    font-size: 11px;
+    font-size: 10.5px;
     color: #888;
     letter-spacing: 1px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #dedad4;
     padding-top: 8px;
     margin-top: 8px;
   }
@@ -70,112 +72,164 @@
   .contact-item {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 7px;
     font-size: 11.5px;
-    color: #aaa;
-    margin-bottom: 6px;
+    color: #555;
+    margin-bottom: 5px;
     word-break: break-all;
   }
-  .contact-item .icon { opacity: 0.5; flex-shrink: 0; margin-top: 1px; }
+  .contact-item .icon { opacity: 0.45; flex-shrink: 0; margin-top: 1px; }
 
+  /* 左侧 section 标题：细线 + 小字 */
   .s-section-title {
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #666;
-    border-bottom: 1px solid #333;
-    padding-bottom: 6px;
+    color: #999;
+    border-bottom: 1px solid #dedad4;
+    padding-bottom: 5px;
     margin-bottom: 10px;
   }
 
+  /* 技能 tag：纯边框，无填充色 */
   .skill-tag {
     display: inline-block;
-    background: #2a2a2c;
-    color: #ccc;
-    font-size: 11px;
-    padding: 3px 8px;
+    background: transparent;
+    color: #444;
+    font-size: 10.5px;
+    padding: 2px 7px;
     border-radius: 2px;
     margin: 3px 3px 3px 0;
-    border: 1px solid #383838;
+    border: 1px solid #c8c4bc;
   }
 
   .lang-item { margin-bottom: 8px; }
-  .lang-name { font-size: 12px; color: #bbb; margin-bottom: 3px; }
-  .lang-bar { height: 3px; background: #333; border-radius: 2px; }
-  .lang-fill { height: 100%; background: #888; border-radius: 2px; }
+  .lang-name { font-size: 11.5px; color: #555; margin-bottom: 4px; }
+  .lang-bar { height: 2px; background: #dedad4; border-radius: 2px; }
+  .lang-fill { height: 100%; background: #9a9690; border-radius: 2px; }
 
   .honor-item {
-    font-size: 12px;
-    color: #aaa;
+    font-size: 11.5px;
+    color: #555;
     padding-left: 10px;
     position: relative;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
+    line-height: 1.5;
   }
-  .honor-item::before { content: "★"; position: absolute; left: 0; font-size: 9px; color: #666; top: 2px; }
+  .honor-item::before {
+    content: "·";
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+    color: #aaa;
+    top: -1px;
+  }
 
   /* ===== 右侧主内容 ===== */
   .main {
-    padding: 36px 30px;
+    padding: 38px 32px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
+    background: #fff;
   }
 
+  /* 右侧 section 标题：中文 + 粗细线组合 */
   .m-section-title {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 700;
-    letter-spacing: 2.5px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #1a1a1a;
-    border-bottom: 2px solid #1c1c1e;
+    color: #333;
+    border-bottom: 1.5px solid #1a1a1a;
     padding-bottom: 5px;
-    margin-bottom: 12px;
+    margin-bottom: 13px;
   }
 
   .summary-text {
-    font-size: 12.5px;
-    color: #444;
-    line-height: 1.75;
+    font-size: 12px;
+    color: #3a3a3a;
+    line-height: 1.8;
   }
 
-  .entry { margin-bottom: 14px; }
+  .entry { margin-bottom: 13px; }
   .entry:last-child { margin-bottom: 0; }
 
   .entry-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
-  .entry-title { font-size: 13px; font-weight: 700; color: #1a1a1a; }
-  .entry-date { font-size: 11px; color: #888; white-space: nowrap; margin-left: 8px; }
-  .entry-sub { font-size: 11.5px; color: #666; margin-bottom: 5px; }
-
-  .entry-bullets { padding-left: 14px; list-style: none; }
-  .entry-bullets li {
-    font-size: 12px;
+  /* 公司/项目名：粗体，最显眼 */
+  .entry-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 0.2px;
+  }
+  /* 日期：淡、小 */
+  .entry-date {
+    font-size: 10.5px;
+    color: #aaa;
+    white-space: nowrap;
+    margin-left: 8px;
+    font-weight: 400;
+  }
+  /* 职位：加粗，与公司名同行层次 */
+  .entry-sub {
+    font-size: 11.5px;
     color: #444;
-    line-height: 1.65;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .entry-bullets { padding-left: 0; list-style: none; }
+  .entry-bullets li {
+    font-size: 11.5px;
+    color: #3a3a3a;
+    line-height: 1.7;
     margin-bottom: 4px;
     position: relative;
-    padding-left: 10px;
+    padding-left: 12px;
   }
-  .entry-bullets li::before { content: "–"; position: absolute; left: 0; color: #999; }
+  .entry-bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #bbb;
+    font-weight: 300;
+  }
 
-  .kw { font-weight: 600; color: #1a1a1a; }
+  /* 关键词高亮：纯粗体，不换色 */
+  .kw {
+    font-weight: 700;
+    color: #111;
+  }
 
   .edu-entry { margin-bottom: 10px; }
   .edu-row {
     display: grid;
-    grid-template-columns: 130px 1fr auto;
+    grid-template-columns: 128px 1fr auto;
     align-items: baseline;
-    gap: 0 12px;
+    gap: 0 10px;
   }
-  .edu-date { font-size: 11px; color: #888; white-space: nowrap; }
-  .edu-school { font-size: 13px; font-weight: 700; color: #1a1a1a; }
-  .edu-degree { font-size: 12px; font-weight: 600; color: #444; white-space: nowrap; }
-  .edu-detail { font-size: 11.5px; color: #888; margin-top: 3px; }
+  .edu-date { font-size: 10.5px; color: #aaa; white-space: nowrap; }
+  .edu-school { font-size: 13px; font-weight: 700; color: #111; }
+  .edu-degree { font-size: 11.5px; font-weight: 600; color: #555; white-space: nowrap; }
+  .edu-detail { font-size: 11px; color: #999; margin-top: 3px; padding-left: 0; }
+
+  /* 经历内小分类标题 */
+  .entry-cat {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    margin-top: 7px;
+    margin-bottom: 2px;
+    padding-left: 12px;
+  }
+  .entry-cat:first-of-type { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -307,10 +361,17 @@
           <span class="entry-date">2026/05 — 至今</span>
         </div>
         <div class="entry-sub">产品经理实习生</div>
+        <div class="entry-cat">① 模型生成质量优化</div>
         <ul class="entry-bullets">
-          <li><span class="kw">AIGC 产品流程设计</span>：基于用户心智重构分镜到短剧制作的交互流程，独立完成交互原型与流程 Demo 开发，实现优于行业竞品的使用效果。</li>
-          <li><span class="kw">AI Prompt 工程化</span>：主导 AIGC Prompt 系统化设计，构建双层架构与自动关联资产机制，建立自测流程保障生成质量，实现工业级分镜表输出。</li>
-          <li><span class="kw">竞品与行业研究</span>：系统拆解主要竞品 AI Agent 能力边界，独立输出 AI 视频生成赛道深度分析报告，覆盖市场格局、技术路线演进与商业模式，直接支撑产品差异化决策。</li>
+          <li>主导 Prompt 系统化设计，构建双层架构与自动关联资产机制；自定义 8 类场景文本类型建立<span class="kw">分场景评测体系</span>，以生成视频效果为验收标准驱动迭代；与研发协同归因上线后异常，实现<span class="kw">工业级分镜表稳定输出</span>。</li>
+        </ul>
+        <div class="entry-cat">② 功能交互体验优化</div>
+        <ul class="entry-bullets">
+          <li>基于用户心智重构分镜到短剧制作的交互流程，独立完成交互原型与流程 Demo 开发，效果优于内部竞品；使用竞品 AI Agent 进行能力反向拆解，推理 Skill 配置与知识库结构，直接支撑产品差异化方向决策。</li>
+        </ul>
+        <div class="entry-cat">③ 自动化流程建设</div>
+        <ul class="entry-bullets">
+          <li>封装底层 Prompt 并设计数据流转机制，实现分镜表到生图 / 生视频 Prompt 的自动化生成，<span class="kw">降低用户编辑门槛</span>；自主编排工作流用于快速验证 Prompt 效果，提升迭代效率。</li>
         </ul>
       </div>
 
@@ -322,9 +383,8 @@
         </div>
         <div class="entry-sub">风控策略运营实习生</div>
         <ul class="entry-bullets">
-          <li>深度理解小红书内容生态与平台规则机制，在「管控效率与创作者体验」的权衡中建立<span class="kw">产品化思维</span>。</li>
-          <li><span class="kw">数据分析与指标体系</span>：定义「事件量 × VVR 浓度 × diff 值」优先级判断框架，构建核心体验指标体系，驱动团队资源聚焦。</li>
-          <li>策略优化落地：针对机审高误伤率发起策略优化，将误伤率从 <span class="kw">33.8% 降至 25.5%</span>，完成「管控效率与创作者体验」权衡的产品化论证。</li>
+          <li><span class="kw">数据驱动决策</span>：定义「事件量 × VVR 浓度 × diff 值」优先级判断框架，构建核心体验指标体系，驱动团队资源聚焦高影响议题。</li>
+          <li><span class="kw">用户行为分析与策略迭代</span>：通过人审抽样建立误伤复核基准，对误判内容进行图文特征聚类（高频关键词、内容模式），还原创作者行为规律；推动策略规则迭代，将误伤率从 <span class="kw">33.8% 降至 25.5%</span>，在管控效率与创作者体验间完成量化验证。</li>
         </ul>
       </div>
     </section>
@@ -336,7 +396,7 @@
       <!-- JoyOps -->
       <div class="entry">
         <div class="entry-header">
-          <span class="entry-title">JoyOps：出海商品运营一体化工作台</span>
+          <span class="entry-title">JoyOps：多Agent协同的跨境电商运营工作台</span>
           <span class="entry-date">2026/04</span>
         </div>
         <div class="entry-sub">项目负责人 / 首席产品官 — 基于 Vibe Coding</div>
